@@ -9,7 +9,7 @@ const dummyMatches = [
 ];
 
 const dummyProfile = 
-  { firstName: '', lastName: 'Doe', communication: 2, location: '961 Leigh Mill Road, Great Falls, VA', interests: ['Watching TV', 'Cooking'], };
+  { firstName: 'Andrew', lastName: 'Ipsum', communication: 2, location: '961 Leigh Mill Road, Great Falls, VA', interests: ['Watching TV', 'Cooking'], };
 
 export default class MatchList extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ export default class MatchList extends Component {
       <div>
         <h3>Person to Match</h3>
           <Card>
-            <CardTitle title={`${dummyProfile.firstName} ${dummyProfile.lastName}`} subtitle={`match score: ${dummyProfile.matchScore}`}/>
+            <CardTitle title={`${dummyProfile.firstName} ${dummyProfile.lastName}`} />
             <CardText>
               Location: {dummyProfile.location}<br/>
               Interests: {dummyProfile.interests.join(',')}<br/>

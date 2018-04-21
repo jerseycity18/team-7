@@ -77,9 +77,9 @@ class UserForm extends Component {
 	        </div>
 
 
-			<h2>Hobbies/Interest
+			<h2>Hobbies and Interests
 			</h2>
-	    <h3>Rate your interest from 1-10</h3>
+	    <h3>Select Your Interests and Hobbies</h3>
 	    
 			<div>    
 		        <label for="art">
@@ -97,17 +97,15 @@ class UserForm extends Component {
 
 
 	        </div>
-			<div>
-	  
+          <div>
 		        <label for="skiing">
 		        Skiing
 		        </label>
 		        <input name="skiing" type="checkbox"/>
-	        
-			</div>
+          </div>
 
 	  
-	        <input class="submit" type="submit"/>
+	        <input class="btn btn-primary" type="submit"/>
 
 
         </form>
