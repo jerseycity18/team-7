@@ -47,19 +47,38 @@ app.get('/api/users', (req, res, next) => {
    })
 });
 
-app.get('/api/user/:userId/matches', (req, res, next) => {
-  res.status(200).send(dummyUserTwo);
-   //pool.connect(function (err, client, done) {
+app.get('/api/user/:userId', (req, res, next) => {
+  //res.status(200).send(dummyUserTwo);
+   pool.connect(function (err, client, done) {
        //if (err) {
          //  console.log('error',"Cannot connect to the DB: " + err);
            //done()
        //}
-       //var queryString = 'SELECT * FROM agency';
-       //client.query(queryString, function (err, result) {
-         //   done();
+       var id = req.params.userId;
+       var queryString = 'select name,phone,address,city,zipcode,gender,email,communication,has_idd from codeforgood.user WHERE codeforgood.user.id=' + id;
+       client.query(queryString, function (err, result) {
+            done();
+            res.status(200).send(result.rows);
            // returnResponse(err,res,result, queryString);
-       //})
-   //})
+       })
+   })
+});
+
+app.get('/api/user/:userId/interests', (req, res, next) => {
+  //res.status(200).send(dummyUserTwo);
+   pool.connect(function (err, client, done) {
+       //if (err) {
+         //  console.log('error',"Cannot connect to the DB: " + err);
+           //done()
+       //}
+       var id = req.params.userId;
+       var queryString = "select" +"'interest'"+", string_agg(interest, ', ') as interests from codeforgood.user_interests ui join codeforgood.interests i on i.id = ui.interest_id where ui.user_id ="+id;
+       client.query(queryString, function (err, result) {
+            done();
+            res.status(200).send(result.rows);
+           // returnResponse(err,res,result, queryString);
+       })
+   })
 });
 
 app.post('/api/user/new', function (req, res, next) {
