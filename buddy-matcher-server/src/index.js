@@ -45,7 +45,7 @@ app.get('/user/:userId', (req, res, next) => {
    //})
 });
 
-app.get('/user/:userId/match', (req, res, next) => {
+app.get('/user/:userId/matches', (req, res, next) => {
   res.status(200).send(dummyUserTwo);
    //pool.connect(function (err, client, done) {
        //if (err) {
