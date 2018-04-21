@@ -87,9 +87,11 @@ app.get('/api/:userId/matches', function (req, res, next) {
        //var queryString = 'SELECT * FROM agency';
        var id = req.params.userId;
        var match = generateRandom(1,12,id);
-       var queryString = 'select name,phone,address,city,zipcode,gender,email,communication,has_idd from codeforgood.user WHERE codeforgood.user.id=' + match;
+       var queryString = 'select name,phone,address,city,zipcode,gender,email,communication,has_idd from codeforgood.user WHERE id='+id; 
        client.query(queryString, function (err, result) {
             done();
+            result.rows[0].interests = ['Programming', 'Hackathons', 'Skiing', 'Running'];
+            result.rows[0].interestsInCommon = ['Skiing', 'Running'];
             res.status(200).send(result.rows);
             //returnResponse(err,res,result, queryString);
        })
