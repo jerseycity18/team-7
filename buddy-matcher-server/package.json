@@ -4,12 +4,16 @@
   "main": "src/index.js",
   "author": "Team 7!",
   "license": "UNLICENSED",
+  "scripts": {
+    "develop" : "nodemon --exec babel-node src/index.js"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "nodemon": "^1.17.3"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "pg": "^7.4.1"
   }
 }
