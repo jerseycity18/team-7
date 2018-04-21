@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import MatchList from './Matches';
 import logo from './logo.svg';
 import './App.css';
+import {List, ListItem} from 'material-ui/List';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+import ContentInbox from 'material-ui/svg-icons/content/inbox';
+
 
 class Login extends Component {
   render() {
@@ -12,8 +16,8 @@ class Login extends Component {
 }
 
 const toMatchDemo = [
-  {name: 'foo', hasIdd: true },
-  {name: 'bar', hasIdd: false },
+  {name: 'foo', hasIdd: true , type: 'buddy'},
+  {name: 'bar', hasIdd: false, type: 'volunteer'},
 ];
 
 class ProfileItem extends Component {
@@ -33,19 +37,27 @@ class ProfileList extends Component {
   }
 
   render() {
+    console.log("--"+this);
     return (
       <div>
-        <h3>Ready to Match</h3>
-        {this.state.toMatch.map(({ name, hasIdd }, index) => <ProfileItem key={index} name={name} hasIdd={hasIdd} />)}
+        <h3>Users</h3>
+        <List>
+        {this.state.toMatch.map(({ name, hasIdd, type }, index) => <ListItem key={index} primaryText={name} rightIcon={type == "buddy" ? <ActionInfo/>: <ContentInbox/>}  />)}
+        </List>
       </div>
     );
   }
 }
 
+
 class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
+
+
+
+
       <Router>
           <div className="App">
             <header className="App-header">
