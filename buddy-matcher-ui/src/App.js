@@ -7,7 +7,7 @@ import './App.css';
 import {List, ListItem} from 'material-ui/List';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
-
+import UserForm from './m.js';
 
 class Login extends Component {
   render() {
@@ -68,6 +68,7 @@ class App extends Component {
               <Route exact path="/" component={Login} />
               <Route exact path="/admin/profiles" component={ProfileList} />
               <Route exact path="/admin/profiles/:userId/matches" component={MatchList} />
+              <Route exact path="/user" component={UserForm} />
             </div>
           </div>
       </Router>
