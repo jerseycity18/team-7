@@ -30,19 +30,31 @@ class ProfileItem extends Component {
   }
 }
 
+// Dummy data
+const users = [
+  { name: 'Jane Doe', hasIdd: true, },
+  { name: 'John Smith', hasIdd: false, },
+  { name: 'James Smith', hasIdd: false, },
+  { name: 'Diana Smith', hasIdd: true, },
+];
+
 class ProfileList extends Component {
   constructor(props) {
     super(props);
-    this.state = { toMatch: toMatchDemo }; //TODO: remove dummy data
+    this.state = { toMatch: [] };
+  }
+
+  componentDidMount() {
+    this.setState({ toMatch: users });
   }
 
   render() {
-    console.log("--"+this);
     return (
       <div>
         <h3>Users</h3>
         <List>
-        {this.state.toMatch.map(({ name, hasIdd, type }, index) => <ListItem key={index} primaryText={name} rightIcon={type == "buddy" ? <ActionInfo/>: <ContentInbox/>}  />)}
+        {this.state.toMatch.map(({ name, hasIdd, type }, index) => 
+          <ListItem containerElement={<Link to={`/admin/profiles/${index}/matches`} />} key={index} primaryText={name} rightIcon={hasIdd ? <ActionInfo/>: <ContentInbox/>}  />)}
         </List>
       </div>
     );
@@ -54,10 +66,6 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-
-
-
-
       <Router>
           <div className="App">
             <header className="App-header">
@@ -66,6 +74,7 @@ class App extends Component {
             </header>
             <div>
               <Route exact path="/" component={Login} />
+              <Route exact path="/user/signup" component={Login} />
               <Route exact path="/admin/profiles" component={ProfileList} />
               <Route exact path="/admin/profiles/:userId/matches" component={MatchList} />
               <Route exact path="/user" component={UserForm} />
