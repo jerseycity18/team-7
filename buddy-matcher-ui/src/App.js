@@ -51,7 +51,7 @@ class ProfileList extends Component {
   render() {
     return (
       <div>
-        <h3>Users</h3>
+        <h3>Matching Candidates</h3>
         <List>
         {this.state.toMatch.map(({ name, hasIdd, type }, index) => 
           <ListItem containerElement={<Link to={`/admin/profiles/${index}/matches`} />} key={index} primaryText={name} rightIcon={hasIdd ? <ActionInfo/>: <ContentInbox/>}  />)}
