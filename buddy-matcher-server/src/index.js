@@ -30,7 +30,7 @@ var dummyUserTwo = {
 }
 //app.use(bodyParser.urlencoded({extended : false}));
 
-app.get('/user/:userId', (req, res, next) => {
+app.get('/api/user/:userId', (req, res, next) => {
   res.status(200).send(dummyUserOne);
    //pool.connect(function (err, client, done) {
        //if (err) {
@@ -45,7 +45,7 @@ app.get('/user/:userId', (req, res, next) => {
    //})
 });
 
-app.get('/user/:userId/match', (req, res, next) => {
+app.get('/api/user/:userId/matches', (req, res, next) => {
   res.status(200).send(dummyUserTwo);
    //pool.connect(function (err, client, done) {
        //if (err) {
@@ -60,7 +60,7 @@ app.get('/user/:userId/match', (req, res, next) => {
    //})
 });
 
-app.post('/user/new', function (req, res, next) {
+app.post('/api/user/new', function (req, res, next) {
   res.status(200).send(req.body);
    //pool.connect(function (err, client, done) {
        //if (err) {
