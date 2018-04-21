@@ -81,22 +81,25 @@ app.get('/api/user/:userId/interests', (req, res, next) => {
    })
 });
 
-app.post('/api/user/new', function (req, res, next) {
-  res.status(200).send(req.body);
-   //pool.connect(function (err, client, done) {
-       //if (err) {
-         //  console.log('error',"Cannot connect to the DB: " + err);
-           //done()
-       //}
+app.get('/api/:userId/matches', function (req, res, next) {
+  //res.status(200).send(req.body);
+   pool.connect(function (err, client, done) {
        //var queryString = 'SELECT * FROM agency';
-       //client.query(queryString, function (err, result) {
-         //   done();
-           // returnResponse(err,res,result, queryString);
-       //})
-   //})
+       var id = req.params.userId;
+       var match = generateRandom(1,12,id);
+       var queryString = 'select name,phone,address,city,zipcode,gender,email,communication,has_idd from codeforgood.user WHERE codeforgood.user.id=' + match;
+       client.query(queryString, function (err, result) {
+            done();
+            res.status(200).send(result.rows);
+            //returnResponse(err,res,result, queryString);
+       })
+   })
 });
 
-
+function generateRandom(min, max, id) {
+    var num = Math.floor(Math.random() * (max - min + 1)) + min;
+    return (num === id) ? generateRandom(min, max) : num;
+}
 
 
 // Specialized unknown URL handling goes here if required. Express already cleanly handles unknown URLs though.
