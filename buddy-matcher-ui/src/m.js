@@ -107,7 +107,7 @@ class UserForm extends Component {
 			</div>
 
 	  
-	        <input type="submit"/>
+	        <input class="submit" type="submit"/>
 
 
         </form>

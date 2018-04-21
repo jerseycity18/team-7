@@ -36,3 +36,9 @@ div{
 label {
   margin: 10px 10px;
 }
+
+.submit{
+  
+  background-color: red;
+  padding: 10px 20px;
+}
