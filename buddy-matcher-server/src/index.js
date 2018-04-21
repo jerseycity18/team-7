@@ -1,6 +1,9 @@
+import bodyParser from 'body-parser';
 var pg = require("pg");
 const express   = require('express');
 const app       = express();
+
+app.use(bodyParser.json());
 
 //const pool = new pg.Pool(config);
 
