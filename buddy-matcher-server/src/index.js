@@ -4,8 +4,19 @@ const app       = express();
 
 //const pool = new pg.Pool(config);
 
+var dummyUserOne = {
+  userId: 1,
+  firstName: 'Andrew',
+  lastName: 'Parks',
+  email: 'parksa243@gmail.com',
+  communication: 2,
+  location: '4545 Cneter blvd Long Island City, Queens',
+  interests: ['Programming','Skiing']
+
+}
+
 app.get('/user/:userId', (req, res, next) => {
-  res.status(200).send("Getting user");
+  res.status(200).send(dummyUserOne);
    //pool.connect(function (err, client, done) {
        //if (err) {
          //  console.log('error',"Cannot connect to the DB: " + err);
@@ -18,6 +29,8 @@ app.get('/user/:userId', (req, res, next) => {
        //})
    //})
 });
+
+app.get('/')
 
 
 
