@@ -1,9 +1,9 @@
-import bodyParser from 'body-parser';
+
 var pg = require("pg");
 const express   = require('express');
 const app       = express();
-
-app.use(bodyParser.json());
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 
 //const pool = new pg.Pool(config);
 
@@ -13,10 +13,11 @@ var dummyUserOne = {
   lastName: 'Parks',
   email: 'parksa243@gmail.com',
   communication: 2,
-  location: '4545 Cneter blvd Long Island City, Queens',
+  location: '4545 Center blvd Long Island City, Queens',
   interests: ['Programming','Skiing']
 
 }
+app.use(bodyParser.urlencoded({extended : false}));
 
 app.get('/user/:userId', (req, res, next) => {
   res.status(200).send(dummyUserOne);
@@ -33,7 +34,22 @@ app.get('/user/:userId', (req, res, next) => {
    //})
 });
 
-app.get('/')
+app.post('/user/new', jsonParser, function (req, res, next) {
+  console.log(req);
+  res.status(200).send(req.body);
+   //pool.connect(function (err, client, done) {
+       //if (err) {
+         //  console.log('error',"Cannot connect to the DB: " + err);
+           //done()
+       //}
+       //var queryString = 'SELECT * FROM agency';
+       //client.query(queryString, function (err, result) {
+         //   done();
+           // returnResponse(err,res,result, queryString);
+       //})
+   //})
+});
+
 
 
 
