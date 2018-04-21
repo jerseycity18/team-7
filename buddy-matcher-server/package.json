@@ -1,0 +1,15 @@
+{
+  "name": "buddy-matcher-server",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "author": "Team 7!",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
