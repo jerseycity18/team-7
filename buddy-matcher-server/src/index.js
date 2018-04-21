@@ -6,7 +6,8 @@ var bodyParser = require('body-parser');
 const app       = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//const pool = new pg.Pool(config);
+const config = require('./config');
+const pool = new pg.Pool(config);
 
 var dummyUserOne = {
   userId: 1,
@@ -30,19 +31,20 @@ var dummyUserTwo = {
 }
 //app.use(bodyParser.urlencoded({extended : false}));
 
-app.get('/api/user/:userId', (req, res, next) => {
-  res.status(200).send(dummyUserOne);
-   //pool.connect(function (err, client, done) {
+app.get('/api/users', (req, res, next) => {
+  //res.status(200).send(dummyUserOne);
+   pool.connect(function (err, client, done) {
        //if (err) {
          //  console.log('error',"Cannot connect to the DB: " + err);
            //done()
        //}
-       //var queryString = 'SELECT * FROM agency';
-       //client.query(queryString, function (err, result) {
-         //   done();
+       var queryString = 'select name,phone,address,city,zipcode,gender,email,communication,has_idd from codeforgood.user';
+       client.query(queryString, function (err, result) {
+            done();
+            res.status(200).send(result.rows);
            // returnResponse(err,res,result, queryString);
-       //})
-   //})
+       })
+   })
 });
 
 app.get('/api/user/:userId/matches', (req, res, next) => {
