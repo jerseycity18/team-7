@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import MatchList from './Matches';
 import logo from './logo.svg';
 import './App.css';
 
@@ -51,7 +52,8 @@ class App extends Component {
           </header>
           <div>
             <Route exact path="/" component={Login} />
-            <Route path="/admin/profiles" component={ProfileList} />
+            <Route exact path="/admin/profiles" component={ProfileList} />
+            <Route exact path="/admin/profiles/:userId/matches" component={MatchList} />
           </div>
         </div>
       </Router>
