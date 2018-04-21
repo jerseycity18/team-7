@@ -47,19 +47,21 @@ app.get('/api/users', (req, res, next) => {
    })
 });
 
-app.get('/api/user/:userId/matches', (req, res, next) => {
-  res.status(200).send(dummyUserTwo);
-   //pool.connect(function (err, client, done) {
+app.get('/api/user/:userId', (req, res, next) => {
+  //res.status(200).send(dummyUserTwo);
+   pool.connect(function (err, client, done) {
        //if (err) {
          //  console.log('error',"Cannot connect to the DB: " + err);
            //done()
        //}
-       //var queryString = 'SELECT * FROM agency';
-       //client.query(queryString, function (err, result) {
-         //   done();
+       var id = req.params.userId;
+       var queryString = 'select name,phone,address,city,zipcode,gender,email,communication,has_idd from codeforgood.user WHERE codeforgood.user.id=' + id;
+       client.query(queryString, function (err, result) {
+            done();
+            res.status(200).send(result.rows);
            // returnResponse(err,res,result, queryString);
-       //})
-   //})
+       })
+   })
 });
 
 app.post('/api/user/new', function (req, res, next) {
