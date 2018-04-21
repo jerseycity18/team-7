@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import MatchList from './Matches';
 import logo from './logo.svg';
@@ -44,19 +45,21 @@ class ProfileList extends Component {
 class App extends Component {
   render() {
     return (
+      <MuiThemeProvider>
       <Router>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <div>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/admin/profiles" component={ProfileList} />
-            <Route exact path="/admin/profiles/:userId/matches" component={MatchList} />
+          <div className="App">
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h1 className="App-title">Welcome to React</h1>
+            </header>
+            <div>
+              <Route exact path="/" component={Login} />
+              <Route exact path="/admin/profiles" component={ProfileList} />
+              <Route exact path="/admin/profiles/:userId/matches" component={MatchList} />
+            </div>
           </div>
-        </div>
       </Router>
+      </MuiThemeProvider>
     );
   }
 }
