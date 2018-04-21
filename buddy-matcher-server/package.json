@@ -5,7 +5,7 @@
   "author": "Team 7!",
   "license": "UNLICENSED",
   "scripts": {
-    "develop" : "nodemon --exec babel-node src/index.js"
+    "develop": "nodemon --exec babel-node src/index.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
